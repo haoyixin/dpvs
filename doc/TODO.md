@@ -4,7 +4,7 @@ DPVS TODO list
 Short-term
 ----------
 
-* [x] Merge DPDK-17.05.2
+* [+] Merge DPDK-17.11.1
 * [x] Basic traffic control
 * [x] Neighbour (ARP) refactor
 * [x] Tunnel Interface (gre/ipip)
