@@ -49,8 +49,8 @@ LIBS += -lpthread -lnuma
 
 CFLAGS += $(INCDIRS) $(LIBS)
 
-OBJS := $(shell find $(SRCDIR) -name '*.c' | sort)
-OBJS := $(patsubst %.c,%.o,$(OBJS))
+SRCS := $(shell find $(SRCDIR) -name '*.c' | sort)
+OBJS := $(patsubst %.c,%.o,$(SRCS))
 
 all: $(TARGET)
 
@@ -68,3 +68,6 @@ clean:
 
 install:
 	install -m 744 $(TARGET) $(INSDIR)
+
+dep:
+	@$(CC) $(CFLAGS) -M $(SRCS) | ../scripts/mkdep.py ../deps

@@ -39,3 +39,6 @@ install:
 	install -m 744 keepalived/bin/keepalived $(INSDIR)/keepalived
 	install -m 744 ipvsadm/ipvsadm $(INSDIR)/ipvsadm
 	install -m 744 dpip/build/dpip $(INSDIR)/dpip
+
+dep:
+	for i in $(SUBDIRS); do $(MAKE) -C $$i dep || exit 1; done

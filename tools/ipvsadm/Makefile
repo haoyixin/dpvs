@@ -89,6 +89,7 @@ DEFINES		= -DVERSION=\"$(VERSION)\" -DSCHEDULERS=\"$(SCHEDULERS)\" \
 DEFINES		+= $(shell if [ ! -f ../ip_vs.h ]; then	\
 		     echo "-DHAVE_NET_IP_VS_H"; fi;)
 
+SRCS := $(shell find ./ -name '*.c' | sort)
 
 .PHONY	= all clean install dist distclean rpm rpms
 
@@ -147,3 +148,6 @@ debs:
 
 %.o:	%.c
 		$(CC) $(CFLAGS) $(INCLUDE) $(DEFINES) -c -o $@ $<
+
+dep:
+	$(CC) $(CFLAGS) -M $(SRCS) | ../../scripts/mkdep.py ../../deps

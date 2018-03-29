@@ -38,3 +38,6 @@ clean:
 install:all
 	-mkdir -p $(INSDIR)
 	for i in $(SUBDIRS); do $(MAKE) -C $$i install || exit 1; done
+
+dep:
+	for i in $(SUBDIRS); do $(MAKE) -C $$i dep || exit 1; done

@@ -36,6 +36,8 @@ OBJS = dpip.o utils.o route.o addr.o neigh.o link.o vlan.o \
 	   qsch.o cls.o tunnel.o ../../src/common.o \
 	   ../keepalived/keepalived/libipvs-2.6/sockopt.o
 
+SRCS := $(shell find ./ -name '*.c' | sort)
+
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
@@ -44,3 +46,6 @@ $(TARGET): $(OBJS)
 
 clean:
 	rm -rf ./build/ *.o
+
+dep:
+	gcc $(CFLAGS) -M $(SRCS) | ../../scripts/mkdep.py ../../deps
